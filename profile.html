@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FarmX - Profile</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#a8000d", primaryFixed: "#ffdad5", onPrimary: "#ffffff",
+        surface: "#f9f9fc", surfaceLow: "#f3f3f6", surfaceHigh: "#e8e8ea",
+        onSurface: "#1a1c1e", onSurfaceVariant: "#5d3f3c", outlineVariant: "#e7bdb7",
+        tertiary: "#2f5c29", tertiaryFixed: "#bcf0ae", error: "#ba1a1a"
+      },
+      fontFamily: { sans: ['Inter', 'sans-serif'] }
+    }
+  }
+}
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .filled { font-variation-settings: 'FILL' 1; }
+</style>
+</head>
+<body class="bg-surface text-onSurface font-sans min-h-screen pb-24">
+
+<!-- Top Bar -->
+<header class="bg-white border-b border-outlineVariant shadow-sm sticky top-0 z-50 flex items-center justify-between px-4 h-16">
+  <h1 class="text-xl font-bold text-primary">My Profile</h1>
+  <button class="p-2 rounded-full hover:bg-surfaceLow"><span class="material-symbols-outlined text-primary">settings</span></button>
+</header>
+
+<main class="px-4 pt-4 max-w-2xl mx-auto space-y-4">
+  <!-- User Info -->
+  <div class="bg-white p-6 rounded-xl border border-outlineVariant text-center shadow-sm">
+    <div class="relative inline-block">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3jtfL3R0r2RYfdigskvAHKJP6A1PQJ_KUhhT5N-K_I0Yuz0qb7NZE8b7meYqaIKCiGvcf0a54WGDn9eoS9k4j68ImQHNw_ntn4yoQxLJt9CgGjgNhn7hJCYrbhxdJVBbQpjTOLLwKxziihHwTLqnXqtEPPk6ZaFA0GLAbZ4bIfi5IN8NTVo-R17mFagx3MgTENl4LS47KXPKu7hooC3yMdcLn_LNDeE8PqyJLBYX32KuNL1IzL6Xjx0Twdkis8F4KrSX-aN5-nHYo" class="w-24 h-24 rounded-full object-cover border-4 border-primaryFixed mx-auto"/>
+      <span class="absolute bottom-1 right-1 bg-tertiary w-6 h-6 rounded-full flex items-center justify-center border-2 border-white">
+        <span class="material-symbols-outlined filled text-white text-[14px]">verified</span>
+      </span>
+    </div>
+    <h2 class="font-bold text-lg mt-3">Sani Abubakar</h2>
+    <p class="text-xs text-onSurfaceVariant">Commercial Farmer • Kano</p>
+    <span class="bg-primaryFixed text-primary px-3 py-1 rounded-full text-xs font-bold mt-2 inline-block">Agri-Credits: 1,250</span>
+  </div>
+
+  <!-- Farm Stats -->
+  <div class="grid grid-cols-2 gap-3">
+    <div class="bg-white p-4 rounded-xl border border-outlineVariant">
+      <span class="material-symbols-outlined filled text-tertiary">grass</span>
+      <p class="text-xl font-bold mt-1">15 ha</p>
+      <p class="text-[10px] text-onSurfaceVariant">Farm Size</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl border border-outlineVariant">
+      <span class="material-symbols-outlined filled text-primary">star</span>
+      <p class="text-xl font-bold mt-1">4.9</p>
+      <p class="text-[10px] text-onSurfaceVariant">Rating</p>
+    </div>
+  </div>
+
+  <!-- Settings Menu -->
+  <div class="bg-white rounded-xl border border-outlineVariant overflow-hidden">
+    <div class="p-4 flex items-center gap-4 border-b border-outlineVariant hover:bg-surfaceLow">
+      <div class="bg-primaryFixed w-10 h-10 rounded-lg flex items-center justify-center text-primary"><span class="material-symbols-outlined">person</span></div>
+      <div class="flex-1"><p class="font-bold text-sm">Personal Info</p><p class="text-[10px] text-onSurfaceVariant">Name, phone, email</p></div>
+      <span class="material-symbols-outlined text-onSurfaceVariant">chevron_right</span>
+    </div>
+    <div class="p-4 flex items-center gap-4 border-b border-outlineVariant hover:bg-surfaceLow">
+      <div class="bg-tertiaryFixed w-10 h-10 rounded-lg flex items-center justify-center text-tertiary"><span class="material-symbols-outlined">location_on</span></div>
+      <div class="flex-1"><p class="font-bold text-sm">Farm Locations</p><p class="text-[10px] text-onSurfaceVariant">3 farms registered</p></div>
+      <span class="material-symbols-outlined text-onSurfaceVariant">chevron_right</span>
+    </div>
+    <div class="p-4 flex items-center gap-4 hover:bg-surfaceLow">
+      <div class="bg-primaryFixed w-10 h-10 rounded-lg flex items-center justify-center text-primary"><span class="material-symbols-outlined">language</span></div>
+      <div class="flex-1"><p class="font-bold text-sm">Language</p><p class="text-[10px] text-onSurfaceVariant">English / Hausa</p></div>
+      <span class="material-symbols-outlined text-onSurfaceVariant">chevron_right</span>
+    </div>
+  </div>
+
+  <!-- Logout -->
+  <button class="w-full bg-white p-4 rounded-xl border border-outlineVariant flex items-center justify-center gap-2 text-error font-bold hover:bg-surfaceLow">
+    <span class="material-symbols-outlined">logout</span> Sign Out
+  </button>
+</main>
+
+<!-- Bottom Nav -->
+<nav class="fixed bottom-0 left-0 right-0 flex justify-around items-center h-20 bg-white border-t border-outlineVariant shadow-lg z-50 rounded-t-xl">
+  <a href="index.html" class="flex flex-col items-center text-onSurfaceVariant"><span class="material-symbols-outlined">home</span><span class="text-[10px] font-bold">Home</span></a>
+  <a href="market.html" class="flex flex-col items-center text-onSurfaceVariant"><span class="material-symbols-outlined">storefront</span><span class="text-[10px] font-bold">Market</span></a>
+  <a href="jobs.html" class="flex flex-col items-center text-onSurfaceVariant"><span class="material-symbols-outlined">work</span><span class="text-[10px] font-bold">Jobs</span></a>
+  <a href="wallet.html" class="flex flex-col items-center text-onSurfaceVariant"><span class="material-symbols-outlined">account_balance_wallet</span><span class="text-[10px] font-bold">Wallet</span></a>
+  <a href="profile.html" class="flex flex-col items-center bg-primaryFixed text-primary rounded-full px-4 py-1"><span class="material-symbols-outlined filled">person</span><span class="text-[10px] font-bold">Profile</span></a>
+</nav>
+</body>
+</html>
