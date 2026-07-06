@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="light" lang="ha">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FarmX - Enterprise Dashboard</title>
+<meta name="theme-color" content="#d31018"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        farmx: {
+          red: '#d31018',
+          'red-bright': '#e53935',
+          'red-dark': '#a8000d',
+          'red-light': '#ffe5e1',
+          'red-50': '#fef2f2',
+          'red-100': '#fee2e2',
+        }
+      }
+    }
+  }
+}
+</script>
+<style>
+body { 
+  font-family: 'Inter', sans-serif; 
+  background: linear-gradient(180deg, #fef2f2 0%, #f9f9fc 15%, #f9f9fc 100%);
+  min-height: 100vh;
+}
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.bottom-nav-item.active { color: #d31018; }
+.bottom-nav-item.active span { font-variation-settings: 'FILL' 1; }
+.service-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.service-card:active { transform: scale(0.95); }
+.brand-gradient {
+  background: linear-gradient(135deg, #d31018 0%, #e53935 50%, #ff5252 100%);
+}
+.brand-gradient-text {
+  background: linear-gradient(135deg, #d31018 0%, #e53935 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-glow {
+  box-shadow: 0 20px 40px -10px rgba(211, 16, 24, 0.3);
+}
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.pulse-dot {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+</style>
+</head>
+<body class="pb-24">
+
+<!-- Top Bar - With Original Logo -->
+<header class="bg-white/90 backdrop-blur-xl sticky top-0 z-50 px-4 h-16 flex items-center justify-between border-b border-red-100 shadow-sm">
+  <div class="flex items-center gap-3">
+    <button class="p-2 rounded-full hover:bg-red-50 transition-colors" onclick="toggleDrawer()">
+      <span class="material-symbols-outlined text-farmx-red">menu</span>
+    </button>
+    <div class="flex items-center gap-2">
+      <!-- ORIGINAL LOGO -->
+      <div class="w-10 h-10 rounded-xl overflow-hidden shadow-md ring-2 ring-farmx-red/20">
+        <img src="https://raw.githubusercontent.com/smbabanbaba-maker/farmx-app/main/cdbb4ed0-2e1d-11f1-b896-8925629a6ed3.png" alt="FarmX Logo" class="w-full h-full object-cover"/>
+      </div>
+      <h1 class="text-2xl font-black tracking-tight">
+        <span class="brand-gradient-text">Farm</span><span class="text-gray-900">X</span>
+      </h1>
+    </div>
+  </div>
+  <div class="flex items-center gap-2">
+    <button class="p-2 relative rounded-full hover:bg-red-50 transition-colors" onclick="showNotifications()">
+      <span class="material-symbols-outlined text-gray-700">notifications</span>
+      <span id="notif-badge" class="absolute top-1 right-1 w-2.5 h-2.5 bg-farmx-red-bright rounded-full hidden pulse-dot ring-2 ring-white"></span>
+    </button>
+    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-farmx-red shadow-md">
+      <img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUW2pRKqLwUa1hGINBetOLlK4SlyvbTGdT9Zu3mbPbgsj1Bqr66cg7JobQDkGSH6K18Cvn4_Iy7JqF25ppiYTho45GHAhl642MOvHq40ONyNiIMWDOZ2tdzCtvujjwAksFEVt5nBJVbR0XlzE6HGjtTgmuxuD2dR9NJtoxZ8StfFatZzxY9cJorFn-MY6_XbBE5yuMt7kRDgV9w4dbqIm1XjJZ-O5gClNdL86aZ7PK_mZvpRjcUCRStjXpviY0SquiRdZRHd-taPzN"/>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="px-4 pt-4 space-y-6">
+
+  <!-- Welcome Hero Card - RED GRADIENT -->
+  <div class="brand-gradient rounded-3xl p-6 text-white hero-glow relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+    <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full -ml-8 -mb-8 blur-xl"></div>
+    <div class="relative z-10">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Enterprise</span>
+        <span class="bg-green-400/20 backdrop-blur-md text-green-100 px-2 py-1 rounded-full text-[10px] font-bold flex items-center gap-1">
+          <span class="w-1.5 h-1.5 bg-green-300 rounded-full pulse-dot"></span> Active
+        </span>
+      </div>
+      <h2 class="text-2xl font-black">Barka Da Yau, GreenAgro 👋</h2>
+      <p class="text-white/80 text-sm mt-1">Kamfanin ku yana ci gaba da kyau</p>
+      <div class="grid grid-cols-3 gap-3 mt-5 pt-5 border-t border-white/20">
+        <div>
+          <p class="text-2xl font-black">₦45.2M</p>
+          <p class="text-[10px] text-white/70 uppercase">Revenue</p>
+        </div>
+        <div>
+          <p class="text-2xl font-black">1,250</p>
+          <p class="text-[10px] text-white/70 uppercase">Hectares</p>
+        </div>
+        <div>
+          <p class="text-2xl font-black">12.5k</p>
+          <p class="text-[10px] text-white/70 uppercase">Followers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Company Services Grid -->
+  <section>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-black text-gray-900">Sabis na Kamfani</h3>
+      <a class="text-farmx-red text-xs font-bold flex items-center gap-1" href="#">Duba Duka <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+    </div>
+    <div class="grid grid-cols-4 gap-3">
+      <a class="service-card flex flex-col items-center gap-2 p-3 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl border-2 border-red-200 card-hover" href="/market.html">
+        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-farmx-red shadow-md ring-2 ring-red-100">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">storefront</span>
+        </div>
+        <span class="text-[11px] font-bold text-gray-800">Market</span>
+      </a>
+      <a class="service-card flex flex-col items-center gap-2 p-3 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border-2 border-blue-200 card-hover" href="/wallet.html">
+        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-blue-600 shadow-md ring-2 ring-blue-100">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+        </div>
+        <span class="text-[11px] font-bold text-gray-800">Wallet</span>
+      </a>
+      <a class="service-card flex flex-col items-center gap-2 p-3 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border-2 border-green-200 card-hover" href="/jobs.html">
+        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-green-600 shadow-md ring-2 ring-green-100">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">work</span>
+        </div>
+        <span class="text-[11px] font-bold text-gray-800">Jobs</span>
+      </a>
+      <a class="service-card flex flex-col items-center gap-2 p-3 bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl border-2 border-amber-200 card-hover" href="/learn.html">
+        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-amber-600 shadow-md ring-2 ring-amber-100">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">school</span>
+        </div>
+        <span class="text-[11px] font-bold text-gray-800">Learn</span>
+      </a>
+      <a class="service-card flex flex-col items-center gap-2 p-3 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl border-2 border-purple-200 card-hover" href="/analytics.html">
+        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-purple-600 shadow-md ring-2 ring-purple-100">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">analytics</span>
+        </div>
+        <span class="text-[11px] font-bold text-gray-800">Analytics</span>
+      </a>
+      <a class="service-card flex flex-col items-center gap-2 p-3 bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl border-2 border-cyan-200 card-hover" href="/fleet.html">
+        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-cyan-600 shadow-md ring-2 ring-cyan-100">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+        </div>
+        <span class="text-[11px] font-bold text-gray-800">Fleet</span>
+      </a>
+      <a class="service-card flex flex-col items-center gap-2 p-3 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-200 card-hover" href="/inventory.html">
+        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-orange-600 shadow-md ring-2 ring-orange-100">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+        </div>
+        <span class="text-[11px] font-bold text-gray-800">Inventory</span>
+      </a>
+      <a class="service-card flex flex-col items-center gap-2 p-3 bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl border-2 border-pink-200 card-hover" href="/staff.html">
+        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-pink-600 shadow-md ring-2 ring-pink-100">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+        </div>
+        <span class="text-[11px] font-bold text-gray-800">Staff</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-black text-gray-900">Sabbin Labarai</h3>
+      <a class="text-farmx-red text-xs font-bold flex items-center gap-1" href="/news.html">Duba Duka <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+    </div>
+    <div class="relative rounded-3xl overflow-hidden aspect-[16/9] shadow-xl hero-glow group cursor-pointer">
+      <img alt="Farm" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrYj0YZKJzeu1gBuXrVsuoiaBvNLXM2T_6cfxmxT4JjwLdkeUB979UDtsPwaYs5GEQtvChiIAZcFtMuCuACfq169ZuujZNzhidITgg0MlFXukhwc06AYRaP_5XdY6VKrxQUymLKMvMKkHOJ56gbuM2u3xQ-8ElyuJ1gKZln6WMww5lDzEgrRAYwQ3VVRqvO5wZfZBhWWauB_nnBYufOM_sf2y2TZzt5klIOmgrYFLmAmWpN1HGjSNqCoxWaRuas6bsapJ4XqRqmf7y"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5 flex flex-col justify-end">
+        <span class="brand-gradient text-white text-[10px] font-black px-3 py-1 rounded-full w-fit mb-2 shadow-lg">🔥 ENTERPRISE UPDATE</span>
+        <h4 class="text-white text-lg font-black leading-tight">Sabbin fasahohin noma na zamani don manyan kamfanoni</h4>
+        <p class="text-white/80 text-xs mt-2 flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px]">schedule</span>
+          Daga: FarmX Enterprise • Mintuna 5 da suka wuce
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weather Widget -->
+  <section class="bg-white rounded-3xl p-5 shadow-md border border-red-100 flex items-center justify-between card-hover">
+    <div class="flex items-center gap-4">
+      <div class="w-16 h-16 brand-gradient rounded-2xl flex items-center justify-center text-white shadow-lg">
+        <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">sunny</span>
+      </div>
+      <div>
+        <p class="text-3xl font-black text-gray-900">32°C</p>
+        <p class="text-gray-500 text-xs font-medium">Mostly Sunny • Kano</p>
+      </div>
+    </div>
+    <div class="text-right">
+      <span class="bg-green-100 text-green-700 text-[10px] font-bold px-3 py-1.5 rounded-full border border-green-200">✓ Ideal for Harvest</span>
+      <p class="text-gray-400 text-[10px] mt-1.5 font-medium">Humidity: 42%</p>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section>
+    <h3 class="text-lg font-black text-gray-900 mb-4">Ayyuka Masu Sauri</h3>
+    <div class="grid grid-cols-2 gap-3">
+      <button class="brand-gradient text-white p-4 rounded-2xl shadow-lg hero-glow flex items-center gap-3 active:scale-95 transition-transform">
+        <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+        </div>
+        <div class="text-left">
+          <p class="font-black text-sm">Ƙara Kaya</p>
+          <p class="text-[10px] text-white/80">List new product</p>
+        </div>
+      </button>
+      <button class="bg-white border-2 border-farmx-red text-farmx-red p-4 rounded-2xl shadow-md flex items-center gap-3 active:scale-95 transition-transform">
+        <div class="w-12 h-12 bg-farmx-red-50 rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-2xl text-farmx-red" style="font-variation-settings: 'FILL' 1;">analytics</span>
+        </div>
+        <div class="text-left">
+          <p class="font-black text-sm">Duba Stats</p>
+          <p class="text-[10px] text-gray-500">View analytics</p>
+        </div>
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<!-- Bottom Navigation (7 Items) - RED ACCENT -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-red-100 shadow-2xl z-50 px-2 pb-safe">
+  <div class="flex justify-between items-center h-20">
+    <a class="bottom-nav-item active flex flex-col items-center justify-center gap-1 flex-1" href="/index.html">
+      <span class="material-symbols-outlined">home</span>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400 hover:text-farmx-red transition-colors" href="/market.html">
+      <span class="material-symbols-outlined">storefront</span>
+      <span class="text-[10px] font-bold">Market</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400 hover:text-farmx-red transition-colors" href="/wallet.html">
+      <span class="material-symbols-outlined">account_balance_wallet</span>
+      <span class="text-[10px] font-bold">Wallet</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400 hover:text-farmx-red transition-colors" href="/jobs.html">
+      <span class="material-symbols-outlined">work</span>
+      <span class="text-[10px] font-bold">Jobs</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400 hover:text-farmx-red transition-colors" href="/profile.html">
+      <span class="material-symbols-outlined">person</span>
+      <span class="text-[10px] font-bold">Profile</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400 hover:text-farmx-red transition-colors" href="/company.html">
+      <span class="material-symbols-outlined">business</span>
+      <span class="text-[10px] font-bold">Company</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400 hover:text-farmx-red transition-colors" href="/learn.html">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span class="text-[10px] font-bold">Learn</span>
+    </a>
+  </div>
+</nav>
+
+<!-- Notifications Modal -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden" id="notifications-modal" onclick="this.classList.add('hidden')">
+  <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 max-h-[70vh] overflow-y-auto shadow-2xl" onclick="event.stopPropagation()">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h3 class="text-xl font-black text-gray-900">Sanarwa</h3>
+        <p class="text-xs text-gray-500">Duba sabbin sanarwa</p>
+      </div>
+      <button class="p-2 bg-gray-100 rounded-full hover:bg-red-100 transition-colors" onclick="document.getElementById('notifications-modal').classList.add('hidden')">
+        <span class="material-symbols-outlined text-gray-700">close</span>
+      </button>
+    </div>
+    <div id="notifications-list" class="space-y-3">
+      <p class="text-gray-500 text-center py-8">Babu sabbin sanarwa</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleDrawer() {
+  alert('Menu zai bude');
+}
+
+function showNotifications() {
+  const modal = document.getElementById('notifications-modal');
+  const badge = document.getElementById('notif-badge');
+  modal.classList.remove('hidden');
+  badge.classList.add('hidden');
+  loadNotifications();
+}
+
+function loadNotifications() {
+  const notifications = JSON.parse(localStorage.getItem('farmx_notifications') || '[]');
+  const list = document.getElementById('notifications-list');
+  
+  if (notifications.length === 0) {
+    list.innerHTML = '<div class="text-center py-8"><span class="material-symbols-outlined text-6xl text-gray-300">notifications_off</span><p class="text-gray-500 mt-2">Babu sabbin sanarwa</p></div>';
+    return;
+  }
+  
+  list.innerHTML = notifications.map(notif => `
+    <div class="bg-gradient-to-r ${notif.type === 'order' ? 'from-red-50 to-white border-red-200' : 'from-gray-50 to-white border-gray-200'} p-4 rounded-2xl border-2 ${notif.read ? 'opacity-60' : ''}">
+      <div class="flex items-start gap-3">
+        <div class="w-12 h-12 ${notif.type === 'order' ? 'brand-gradient' : 'bg-gray-200'} rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-md">
+          <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">${notif.type === 'order' ? 'shopping_cart' : 'notifications'}</span>
+        </div>
+        <div class="flex-1">
+          <p class="font-bold text-sm text-gray-900">${notif.title}</p>
+          <p class="text-gray-600 text-xs mt-1">${notif.message}</p>
+          <p class="text-gray-400 text-[10px] mt-2 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[12px]">schedule</span>
+            ${new Date(notif.time).toLocaleString()}
+          </p>
+        </div>
+        ${!notif.read ? '<span class="w-2.5 h-2.5 bg-farmx-red-bright rounded-full pulse-dot"></span>' : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function checkNotifications() {
+  const notifications = JSON.parse(localStorage.getItem('farmx_notifications') || '[]');
+  const unreadCount = notifications.filter(n => !n.read).length;
+  if (unreadCount > 0) {
+    document.getElementById('notif-badge').classList.remove('hidden');
+  }
+}
+
+checkNotifications();
+setInterval(checkNotifications, 30000);
+</script>
+
+</body>
+</html>
