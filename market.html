@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="light" lang="ha">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FarmX Market - Sayar da Kaya</title>
+<meta name="theme-color" content="#d31018"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        farmx: {
+          red: '#d31018',
+          'red-bright': '#e53935',
+          'red-dark': '#a8000d',
+          'red-light': '#ffe5e1',
+        }
+      }
+    }
+  }
+}
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #fef2f2 0%, #f9f9fc 100%); }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.brand-gradient { background: linear-gradient(135deg, #d31018 0%, #e53935 100%); }
+.bottom-nav-item.active { color: #d31018; }
+.bottom-nav-item.active span { font-variation-settings: 'FILL' 1; }
+.payment-option { transition: all 0.3s ease; border: 2px solid #e5e7eb; }
+.payment-option.selected { border-color: #d31018; background: #fef2f2; }
+.photo-upload { transition: all 0.3s ease; }
+.photo-upload:active { transform: scale(0.95); }
+</style>
+</head>
+<body class="pb-24">
+
+<!-- Top Bar -->
+<header class="bg-white sticky top-0 z-50 px-4 h-16 flex items-center justify-between border-b border-red-100">
+  <button class="p-2" onclick="window.history.back()">
+    <span class="material-symbols-outlined text-farmx-red">arrow_back</span>
+  </button>
+  <h1 class="text-xl font-black text-gray-900">Sayar da Kaya</h1>
+  <button class="text-farmx-red font-bold text-sm" onclick="clearForm()">Clear</button>
+</header>
+
+<!-- Main Form -->
+<main class="px-4 py-4 space-y-6">
+
+  <!-- Title -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Title*</label>
+    <input type="text" id="ad-title" placeholder="Misali: Smart irrigation system" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none transition-all" maxlength="70"/>
+    <p class="text-xs text-gray-500 mt-1 text-right"><span id="title-count">0</span>/70</p>
+  </div>
+
+  <!-- Category -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Category*</label>
+    <div class="bg-white border border-gray-300 rounded-xl p-4 flex items-center justify-between cursor-pointer" onclick="selectCategory()">
+      <span class="text-gray-600" id="category-text">Zaɓi Category</span>
+      <span class="material-symbols-outlined text-gray-400">arrow_forward</span>
+    </div>
+  </div>
+
+  <!-- Photos -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Ƙara Hotuna (Aƙalla 1)*</label>
+    <div class="grid grid-cols-4 gap-3" id="photo-grid">
+      <div class="photo-upload aspect-square bg-green-50 border-2 border-dashed border-green-400 rounded-xl flex flex-col items-center justify-center cursor-pointer" onclick="uploadPhoto()">
+        <span class="material-symbols-outlined text-4xl text-green-600">add_a_photo</span>
+        <span class="text-xs text-green-700 font-bold mt-1">Ƙara</span>
+      </div>
+    </div>
+    <p class="text-xs text-gray-500 mt-2">JPG, PNG, HEIC, WEBP • Max 5MB</p>
+  </div>
+
+  <!-- Video Link -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Link zuwa YouTube ko Facebook video</label>
+    <input type="url" placeholder="https://..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none transition-all"/>
+  </div>
+
+  <!-- Region -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Yanki*</label>
+    <div class="bg-white border border-gray-300 rounded-xl p-4 flex items-center justify-between cursor-pointer" onclick="selectRegion()">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-farmx-red">location_on</span>
+        <span class="text-gray-600" id="region-text">Kano Municipal</span>
+      </div>
+      <span class="material-symbols-outlined text-gray-400">arrow_forward</span>
+    </div>
+  </div>
+
+  <!-- Brand & Type -->
+  <div class="grid grid-cols-2 gap-3">
+    <div>
+      <label class="block text-sm font-bold text-gray-700 mb-2">Brand*</label>
+      <input type="text" placeholder="Misali: John Deere" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none"/>
+    </div>
+    <div>
+      <label class="block text-sm font-bold text-gray-700 mb-2">Type*</label>
+      <input type="text" placeholder="Misali: Automatic" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none"/>
+    </div>
+  </div>
+
+  <!-- Condition -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Yanayi*</label>
+    <div class="grid grid-cols-3 gap-3">
+      <button class="condition-btn py-3 px-4 rounded-xl border-2 border-gray-300 font-bold text-sm" onclick="selectCondition(this, 'new')">Sabon</button>
+      <button class="condition-btn py-3 px-4 rounded-xl border-2 border-gray-300 font-bold text-sm" onclick="selectCondition(this, 'used')">Amfani</button>
+      <button class="condition-btn py-3 px-4 rounded-xl border-2 border-gray-300 font-bold text-sm" onclick="selectCondition(this, 'refurbished')">Gyara</button>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Bayani*</label>
+    <textarea id="ad-description" rows="4" placeholder="Bayyana kaya ɗinka sosai..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none resize-none" maxlength="850"></textarea>
+    <p class="text-xs text-gray-500 mt-1 text-right"><span id="desc-count">0</span>/850</p>
+  </div>
+
+  <!-- Price -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Farashi (₦)*</label>
+    <input type="number" id="ad-price" placeholder="Misali: 125,000" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none text-lg font-bold"/>
+  </div>
+
+  <!-- Negotiation -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-3">Kana yarda da tattaunawa?</label>
+    <div class="flex gap-4">
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input type="radio" name="negotiation" value="yes" class="w-5 h-5 text-farmx-red"/>
+        <span class="font-medium">Eh</span>
+      </label>
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input type="radio" name="negotiation" value="no" class="w-5 h-5 text-farmx-red"/>
+        <span class="font-medium">A'a</span>
+      </label>
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input type="radio" name="negotiation" value="not-sure" checked class="w-5 h-5 text-farmx-red"/>
+        <span class="font-medium">Ba na taba</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Delivery -->
+  <div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">
+      <span class="material-symbols-outlined text-farmx-red align-middle">local_shipping</span>
+      Delivery
+    </label>
+    <div class="bg-white border border-gray-300 rounded-xl p-4 flex items-center justify-between cursor-pointer" onclick="selectDelivery()">
+      <span class="text-gray-600" id="delivery-text">Zaɓi zaɓin delivery</span>
+      <span class="material-symbols-outlined text-gray-400">arrow_forward</span>
+    </div>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="grid grid-cols-2 gap-3">
+    <div>
+      <label class="block text-sm font-bold text-gray-700 mb-2">Suna*</label>
+      <input type="text" value="Sani Abubakar" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none"/>
+    </div>
+    <div>
+      <label class="block text-sm font-bold text-gray-700 mb-2">Lamba*</label>
+      <input type="tel" value="09117957946" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none"/>
+    </div>
+  </div>
+
+  <!-- Payment Section -->
+  <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-5">
+    <h3 class="font-black text-gray-900 mb-1 flex items-center gap-2">
+      <span class="material-symbols-outlined text-farmx-red">payments</span>
+      Zaɓi Hanyar Biyan Kudi
+    </h3>
+    <p class="text-xs text-gray-600 mb-4">Ba za ka iya sayar da kaya a wannan category ba kyauta. Zaɓi promotion type.</p>
+    
+    <!-- Payment Options -->
+    <div class="space-y-3">
+      <!-- Option 1: No Promo (Free) -->
+      <div class="payment-option selected bg-white p-4 rounded-xl cursor-pointer" onclick="selectPayment(this, 'no-promo')">
+        <div class="flex items-start justify-between mb-2">
+          <h4 class="font-bold text-gray-900">No promo</h4>
+          <span class="text-lg font-black text-green-600">Kyauta</span>
+        </div>
+        <p class="text-xs text-gray-600 mb-2">Mafi kyawun zaɓi idan kana son gwada platform ɗin. Zai ba ka damar sayarwa sau ɗaya kyauta.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-bold text-gray-700">14 days</span>
+          <span class="material-symbols-outlined text-green-600 text-2xl">check_circle</span>
+        </div>
+      </div>
+
+      <!-- Option 2: TOP Promo -->
+      <div class="payment-option bg-white p-4 rounded-xl cursor-pointer" onclick="selectPayment(this, 'top-promo')">
+        <div class="flex items-start justify-between mb-2">
+          <h4 class="font-bold text-gray-900">TOP promo</h4>
+          <span class="text-lg font-black text-farmx-red">₦3,499</span>
+        </div>
+        <p class="text-xs text-gray-600 mb-2">Mafi kyawun zaɓi idan kana son sayarwa da sauri. Ad ɗinka zai kasance a saman search results.</p>
+        <div class="flex gap-2 mb-2">
+          <button class="bg-green-500 text-white px-4 py-1.5 rounded-lg text-sm font-bold flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">check</span> 7 days
+          </button>
+          <button class="bg-gray-100 text-gray-700 px-4 py-1.5 rounded-lg text-sm font-bold">30 days</button>
+        </div>
+      </div>
+
+      <!-- Option 3: Boost Premium -->
+      <div class="payment-option bg-white p-4 rounded-xl cursor-pointer" onclick="selectPayment(this, 'boost-premium')">
+        <div class="flex items-start justify-between mb-2">
+          <h4 class="font-bold text-gray-900">Boost Premium promo</h4>
+          <span class="text-lg font-black text-farmx-red">₦31,999</span>
+        </div>
+        <p class="text-xs text-gray-600 mb-2">Ba ka iyaka akan adadin kaya. Zai ba ka damar sayar da kaya mara iyaka da 5X traffic.</p>
+        <span class="text-sm font-bold text-gray-700">1 month (28 days)</span>
+      </div>
+    </div>
+
+    <!-- Payment Method Selection -->
+    <div class="mt-5 pt-5 border-t border-red-200">
+      <h4 class="font-bold text-gray-900 mb-3">Zaɓi Hanyar Biya:</h4>
+      <div class="space-y-3">
+        <label class="payment-method flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-gray-300 cursor-pointer" onclick="selectPaymentMethod('wallet')">
+          <input type="radio" name="payment-method" value="wallet" class="w-5 h-5 text-farmx-red"/>
+          <div class="w-12 h-12 bg-farmx-red rounded-xl flex items-center justify-center text-white">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-sm">Daga Wallet ɗinka</p>
+            <p class="text-xs text-gray-500">Ragowa: ₦4,850,200</p>
+          </div>
+        </label>
+
+        <label class="payment-method flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-gray-300 cursor-pointer" onclick="selectPaymentMethod('card')">
+          <input type="radio" name="payment-method" value="card" class="w-5 h-5 text-farmx-red"/>
+          <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white">
+            <span class="material-symbols-outlined">credit_card</span>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-sm">Da Katin Banki</p>
+            <p class="text-xs text-gray-500">Visa, Mastercard, Verve</p>
+          </div>
+        </label>
+
+        <label class="payment-method flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-gray-300 cursor-pointer" onclick="selectPaymentMethod('transfer')">
+          <input type="radio" name="payment-method" value="transfer" class="w-5 h-5 text-farmx-red"/>
+          <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white">
+            <span class="material-symbols-outlined">swap_horiz</span>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-sm">Transfer zuwa Kowanne Banki</p>
+            <p class="text-xs text-gray-500">GTBank, Zenith, UBA, Access...</p>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="space-y-3 pt-4">
+    <button class="brand-gradient text-white w-full py-4 rounded-2xl font-black text-lg shadow-lg active:scale-95 transition-transform" onclick="postAd()">
+      Sayar da Kaya
+    </button>
+    <button class="bg-white border-2 border-farmx-red text-farmx-red w-full py-4 rounded-2xl font-black text-lg active:scale-95 transition-transform" onclick="saveForLater()">
+      Adana & Sayar Daga Baya
+    </button>
+  </div>
+
+  <!-- Terms -->
+  <p class="text-xs text-gray-500 text-center pb-4">
+    Ta danna "Sayar da Kaya", kana yarda da 
+    <a href="#" class="text-farmx-red underline">Terms of Use</a>, 
+    kuma kana tabbatar da cewa ba ka sayar da abubuwan da aka hana.
+  </p>
+
+</main>
+
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-red-100 shadow-2xl z-50 px-2 pb-safe">
+  <div class="flex justify-between items-center h-20">
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400" href="/index.html">
+      <span class="material-symbols-outlined">home</span>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a class="bottom-nav-item active flex flex-col items-center justify-center gap-1 flex-1" href="/market.html">
+      <span class="material-symbols-outlined">storefront</span>
+      <span class="text-[10px] font-bold">Market</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400" href="/wallet.html">
+      <span class="material-symbols-outlined">account_balance_wallet</span>
+      <span class="text-[10px] font-bold">Wallet</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400" href="/jobs.html">
+      <span class="material-symbols-outlined">work</span>
+      <span class="text-[10px] font-bold">Jobs</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-1 flex-1 text-gray-400" href="/profile.html">
+      <span class="material-symbols-outlined">person</span>
+      <span class="text-[10px] font-bold">Profile</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+// Character counters
+document.getElementById('ad-title').addEventListener('input', function() {
+  document.getElementById('title-count').textContent = this.value.length;
+});
+
+document.getElementById('ad-description').addEventListener('input', function() {
+  document.getElementById('desc-count').textContent = this.value.length;
+});
+
+// Functions
+function selectCategory() {
+  const categories = ['Noma', 'Kayayyaki', 'Dabbobi', 'Farma', 'Sauran'];
+  const selected = prompt('Zaɓi category:\n' + categories.map((c, i) => `${i+1}. ${c}`).join('\n'));
+  if (selected && categories[selected-1]) {
+    document.getElementById('category-text').textContent = categories[selected-1];
+  }
+}
+
+function selectRegion() {
+  const regions = ['Kano Municipal', 'Kaduna', 'Abuja', 'Lagos', 'Katsina'];
+  const selected = prompt('Zaɓi yanki:\n' + regions.map((r, i) => `${i+1}. ${r}`).join('\n'));
+  if (selected && regions[selected-1]) {
+    document.getElementById('region-text').textContent = regions[selected-1];
+  }
+}
+
+function selectCondition(btn, condition) {
+  document.querySelectorAll('.condition-btn').forEach(b => {
+    b.classList.remove('border-farmx-red', 'bg-red-50', 'text-farmx-red');
+    b.classList.add('border-gray-300');
+  });
+  btn.classList.remove('border-gray-300');
+  btn.classList.add('border-farmx-red', 'bg-red-50', 'text-farmx-red');
+}
+
+function selectPayment(element, type) {
+  document.querySelectorAll('.payment-option').forEach(opt => {
+    opt.classList.remove('selected');
+    opt.querySelector('.material-symbols-outlined')?.classList.remove('text-green-600');
+  });
+  element.classList.add('selected');
+  if (type === 'no-promo') {
+    element.querySelector('.material-symbols-outlined')?.classList.add('text-green-600');
+  }
+}
+
+function selectPaymentMethod(method) {
+  document.querySelectorAll('.payment-method').forEach(pm => {
+    pm.classList.remove('border-farmx-red', 'bg-red-50');
+    pm.classList.add('border-gray-300');
+  });
+  event.currentTarget.classList.remove('border-gray-300');
+  event.currentTarget.classList.add('border-farmx-red', 'bg-red-50');
+  event.currentTarget.querySelector('input').checked = true;
+}
+
+function uploadPhoto() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const grid = document.getElementById('photo-grid');
+        const div = document.createElement('div');
+        div.className = 'relative aspect-square rounded-xl overflow-hidden';
+        div.innerHTML = `
+          <img src="${e.target.result}" class="w-full h-full object-cover"/>
+          <button class="absolute top-1 right-1 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center" onclick="this.parentElement.remove()">
+            <span class="material-symbols-outlined text-sm">close</span>
+          </button>
+        `;
+        grid.insertBefore(div, grid.lastElementChild);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  input.click();
+}
+
+function selectDelivery() {
+  const options = ['Ina iya delivery', 'Ba ni da delivery', 'Muna tattaunawa'];
+  const selected = prompt('Zaɓi delivery option:\n' + options.map((o, i) => `${i+1}. ${o}`).join('\n'));
+  if (selected && options[selected-1]) {
+    document.getElementById('delivery-text').textContent = options[selected-1];
+  }
+}
+
+function postAd() {
+  const title = document.getElementById('ad-title').value;
+  const price = document.getElementById('ad-price').value;
+  
+  if (!title || !price) {
+    alert('Da fatan za a cika Title da Price!');
+    return;
+  }
+  
+  // Save to localStorage (will be database in production)
+  const ad = {
+    id: Date.now(),
+    title: title,
+    price: price,
+    category: document.getElementById('category-text').textContent,
+    region: document.getElementById('region-text').textContent,
+    description: document.getElementById('ad-description').value,
+    date: new Date().toISOString(),
+    seller: 'Sani Abubakar'
+  };
+  
+  const ads = JSON.parse(localStorage.getItem('farmx_ads') || '[]');
+  ads.push(ad);
+  localStorage.setItem('farmx_ads', JSON.stringify(ads));
+  
+  // Create notification for company
+  const notifications = JSON.parse(localStorage.getItem('farmx_notifications') || '[]');
+  notifications.unshift({
+    type: 'order',
+    title: 'Sabon Kaya a Market',
+    message: `${title} - ₦${parseInt(price).toLocaleString()}`,
+    time: new Date().toISOString(),
+    read: false
+  });
+  localStorage.setItem('farmx_notifications', JSON.stringify(notifications));
+  
+  alert('An sayar da kaya nasara! Zai bayyana a market.');
+  window.location.href = '/profile.html';
+}
+
+function saveForLater() {
+  alert('An adana kaya ɗin! Zaka iya sayar daga baya.');
+}
+
+function clearForm() {
+  if (confirm('Share kana son share duk bayanan?')) {
+    document.querySelectorAll('input[type="text"], input[type="number"], textarea').forEach(el => el.value = '');
+    document.getElementById('category-text').textContent = 'Zaɓi Category';
+    document.getElementById('delivery-text').textContent = 'Zaɓi zaɓin delivery';
+    document.getElementById('title-count').textContent = '0';
+    document.getElementById('desc-count').textContent = '0';
+  }
+}
+</script>
+
+</body>
+</html>
