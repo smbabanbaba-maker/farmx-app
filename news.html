@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>FarmX - News</title>
+<meta name="theme-color" content="#b71c1c"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { farmx: { red: '#b71c1c', 'red-bright': '#d32f2f' } },
+      fontFamily: { sans: ['Inter', 'sans-serif'] },
+      fontWeight: { normal: '400', medium: '500', semibold: '600' }
+    }
+  }
+}
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
+.material-symbols-rounded { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.bottom-nav-item.active { color: #b71c1c; }
+.bottom-nav-item.active span { font-variation-settings: 'FILL' 1, 'wght' 500; }
+</style>
+</head>
+<body class="pb-24 text-gray-700">
+
+<header class="bg-white sticky top-0 z-50 px-4 h-16 flex items-center justify-between border-b border-gray-200">
+  <div class="flex items-center gap-3">
+    <button class="p-2 rounded-full hover:bg-gray-100" onclick="window.history.back()">
+      <span class="material-symbols-rounded text-farmx-red">arrow_back</span>
+    </button>
+    <h1 class="text-xl font-semibold text-gray-900">News</h1>
+  </div>
+  <button class="p-2 rounded-full hover:bg-gray-100">
+    <span class="material-symbols-rounded text-gray-600">search</span>
+  </button>
+</header>
+
+<main class="px-4 pt-4 space-y-4">
+  <!-- News 1 -->
+  <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrYj0YZKJzeu1gBuXrVsuoiaBvNLXM2T_6cfxmxT4JjwLdkeUB979UDtsPwaYs5GEQtvChiIAZcFtMuCuACfq169ZuujZNzhidITgg0MlFXukhwc06AYRaP_5XdY6VKrxQUymLKMvMKkHOJ56gbuM2u3xQ-8ElyuJ1gKZln6WMww5lDzEgrRAYwQ3VVRqvO5wZfZBhWWauB_nnBYufOM_sf2y2TZzt5klIOmgrYFLmAmWpN1HGjSNqCoxWaRuas6bsapJ4XqRqmf7y" class="w-full h-48 object-cover"/>
+    <div class="p-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-[10px] bg-farmx-red text-white px-2 py-0.5 rounded-full font-medium">FarmX News</span>
+        <span class="text-[10px] text-gray-400">2 hours ago</span>
+      </div>
+      <h3 class="font-semibold text-base text-gray-900 mb-2">FarmX Launches Digital Farmers Market Days</h3>
+      <p class="text-sm text-gray-600 mb-3">New initiative connects farmers directly with buyers across Nigeria, eliminating middlemen and increasing profits for smallholder farmers.</p>
+      <button class="text-farmx-red text-sm font-medium flex items-center gap-1">
+        Read More <span class="material-symbols-rounded text-sm">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- News 2 -->
+  <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYNiGGNdVqH1fz9PtS6UfeefXqfAReREgCb49r0f4UMqRkzgxebfFYlOM3yKeVQAIVgZV_c1uga8Q7ktY1aM6r6URVYuo9IRUcpVnxIGG01OCyybMhoib_mw1IKv7ABRgqes5P_dhUyC_PDNF9QfznkQhobW5_BOLzgAIvSoNis2aM8afUfq_IhWrj9woFuVBBpnZUOsIY4LdwHWLUrj-T0-8zzTROys7vzs797Lenn9SN8SIIRdOQn2nxWotm5h1vHHbzTGXGxWaF" class="w-full h-48 object-cover"/>
+    <div class="p-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">Technology</span>
+        <span class="text-[10px] text-gray-400">5 hours ago</span>
+      </div>
+      <h3 class="font-semibold text-base text-gray-900 mb-2">New IoT Sensors Now Available for Smart Farming</h3>
+      <p class="text-sm text-gray-600 mb-3">Connect your soil and weather sensors to FarmX for real-time monitoring and automated irrigation control.</p>
+      <button class="text-farmx-red text-sm font-medium flex items-center gap-1">
+        Read More <span class="material-symbols-rounded text-sm">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- News 3 -->
+  <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS7dLTUwef0242tDyn21lU7TVUVi6wUACggwihKzXTawh0Lx6Q78hakQclzAJJW3EHvw5mojBn3wnph_O_8YmEa--wNOM9v5uAYQ-qNhCYXj3Ks-N02voNbwa3yXJgdb5xCEOqC58R207O9j8SuwmUPLRG4XdHslJxmz2W0rqppWWbPHsx33jGIuY0Msk1DiGtpFlS-6PhQt-QEBGBy217Xrt1Wo6MEFFaniEiF8fhPIsLVzrJ6VxK40X5lk4CQIyuaeXUijjyzsFj" class="w-full h-48 object-cover"/>
+    <div class="p-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Agriculture</span>
+        <span class="text-[10px] text-gray-400">1 day ago</span>
+      </div>
+      <h3 class="font-semibold text-base text-gray-900 mb-2">Best Practices for Irrigation in Dry Season</h3>
+      <p class="text-sm text-gray-600 mb-3">Learn how to maximize water efficiency and crop yield during the dry season with our expert tips and modern techniques.</p>
+      <button class="text-farmx-red text-sm font-medium flex items-center gap-1">
+        Read More <span class="material-symbols-rounded text-sm">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+</main>
+
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-sm z-50 px-2 pb-safe">
+  <div class="flex justify-between items-center h-16">
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/index.html">
+      <span class="material-symbols-rounded">home</span>
+      <span class="text-[10px] font-medium">Home</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/market.html">
+      <span class="material-symbols-rounded">storefront</span>
+      <span class="text-[10px] font-medium">Market</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/wallet.html">
+      <span class="material-symbols-rounded">account_balance_wallet</span>
+      <span class="text-[10px] font-medium">Wallet</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/jobs.html">
+      <span class="material-symbols-rounded">work</span>
+      <span class="text-[10px] font-medium">Jobs</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/company.html">
+      <span class="material-symbols-rounded">business</span>
+      <span class="text-[10px] font-medium">Company</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/community.html">
+      <span class="material-symbols-rounded">groups</span>
+      <span class="text-[10px] font-medium">Community</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/profile.html">
+      <span class="material-symbols-rounded">person</span>
+      <span class="text-[10px] font-medium">Profile</span>
+    </a>
+  </div>
+</nav>
+
+</body>
+</html>
