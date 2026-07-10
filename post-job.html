@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>FarmX - Post Job</title>
+<meta name="theme-color" content="#b71c1c"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { farmx: { red: '#b71c1c', 'red-bright': '#d32f2f' } },
+      fontFamily: { sans: ['Inter', 'sans-serif'] },
+      fontWeight: { normal: '400', medium: '500', semibold: '600' }
+    }
+  }
+}
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
+.material-symbols-rounded { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.bottom-nav-item.active { color: #b71c1c; }
+.bottom-nav-item.active span { font-variation-settings: 'FILL' 1, 'wght' 500; }
+</style>
+</head>
+<body class="pb-24 text-gray-700">
+
+<header class="bg-white sticky top-0 z-50 px-4 h-16 flex items-center justify-between border-b border-gray-200">
+  <div class="flex items-center gap-3">
+    <button class="p-2 rounded-full hover:bg-gray-100" onclick="window.history.back()">
+      <span class="material-symbols-rounded text-farmx-red">arrow_back</span>
+    </button>
+    <h1 class="text-xl font-semibold text-gray-900">Post Job</h1>
+  </div>
+  <button class="text-farmx-red text-sm font-medium" onclick="clearForm()">Clear</button>
+</header>
+
+<main class="px-4 pt-4 space-y-4">
+  <!-- Job Title -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Job Title *</label>
+    <input type="text" id="job-title" placeholder="e.g., Farm Manager, Irrigation Specialist" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none text-sm"/>
+  </div>
+
+  <!-- Job Type -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Job Type *</label>
+    <select id="job-type" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none text-sm bg-white">
+      <option value="">Select Type</option>
+      <option value="full-time">Full-time</option>
+      <option value="part-time">Part-time</option>
+      <option value="contract">Contract</option>
+      <option value="temporary">Temporary</option>
+    </select>
+  </div>
+
+  <!-- Salary Range -->
+  <div class="grid grid-cols-2 gap-3">
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Min Salary (₦)</label>
+      <input type="number" id="job-salary-min" placeholder="e.g., 100000" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none text-sm"/>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Max Salary (₦)</label>
+      <input type="number" id="job-salary-max" placeholder="e.g., 250000" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none text-sm"/>
+    </div>
+  </div>
+
+  <!-- Location -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+    <input type="text" id="job-location" placeholder="e.g., Kano, Nigeria" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none text-sm"/>
+  </div>
+
+  <!-- Description -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Job Description *</label>
+    <textarea id="job-description" rows="4" placeholder="Describe responsibilities and requirements..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none text-sm resize-none"></textarea>
+  </div>
+
+  <!-- Requirements -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Requirements</label>
+    <textarea id="job-requirements" rows="3" placeholder="e.g., 2+ years experience, Bachelor's degree..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-farmx-red focus:ring-2 focus:ring-red-200 outline-none text-sm resize-none"></textarea>
+  </div>
+
+  <!-- Urgent Toggle -->
+  <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200">
+    <div>
+      <p class="text-sm font-medium">Mark as Urgent</p>
+      <p class="text-xs text-gray-500">Get more visibility</p>
+    </div>
+    <label class="relative inline-flex items-center cursor-pointer">
+      <input type="checkbox" id="job-urgent" class="sr-only peer"/>
+      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-red-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-farmx-red"></div>
+    </label>
+  </div>
+</main>
+
+<!-- Fixed Bottom Buttons -->
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 space-y-2 z-50">
+  <button onclick="postJob()" class="w-full bg-farmx-red text-white py-3.5 rounded-xl font-semibold shadow-lg active:scale-95 transition-transform">Post Job</button>
+  <button onclick="saveDraft()" class="w-full border-2 border-farmx-red text-farmx-red py-3.5 rounded-xl font-semibold active:scale-95 transition-transform">Save as Draft</button>
+</div>
+
+<script>
+function postJob() {
+  const title = document.getElementById('job-title').value;
+  const type = document.getElementById('job-type').value;
+  const location = document.getElementById('job-location').value;
+  
+  if (!title || !type || !location) {
+    alert('Please fill all required fields');
+    return;
+  }
+  
+  const job = {
+    id: Date.now(),
+    title,
+    type,
+    salaryMin: parseInt(document.getElementById('job-salary-min').value) || 0,
+    salaryMax: parseInt(document.getElementById('job-salary-max').value) || 0,
+    location,
+    description: document.getElementById('job-description').value,
+    requirements: document.getElementById('job-requirements').value,
+    urgent: document.getElementById('job-urgent').checked,
+    date: new Date().toISOString(),
+    company: 'Current Company'
+  };
+  
+  const jobs = JSON.parse(localStorage.getItem('farmx_jobs') || '[]');
+  jobs.push(job);
+  localStorage.setItem('farmx_jobs', JSON.stringify(jobs));
+  
+  // Create notification
+  const notifications = JSON.parse(localStorage.getItem('farmx_notifications') || '[]');
+  notifications.unshift({
+    type: 'job_posted',
+    title: 'Job Posted Successfully',
+    message: `Your job "${title}" is now live`,
+    time: new Date().toISOString(),
+    read: false
+  });
+  localStorage.setItem('farmx_notifications', JSON.stringify(notifications));
+  
+  alert('Job posted successfully!');
+  window.location.href = '/jobs.html';
+}
+
+function saveDraft() {
+  alert('Draft saved!');
+}
+
+function clearForm() {
+  if (confirm('Clear all fields?')) {
+    document.querySelectorAll('input, textarea, select').forEach(el => el.value = '');
+    document.getElementById('job-urgent').checked = false;
+  }
+}
+</script>
+
+</body>
+</html>
