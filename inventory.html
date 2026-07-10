@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>FarmX - Inventory</title>
+<meta name="theme-color" content="#b71c1c"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { farmx: { red: '#b71c1c', 'red-bright': '#d32f2f' } },
+      fontFamily: { sans: ['Inter', 'sans-serif'] },
+      fontWeight: { normal: '400', medium: '500', semibold: '600' }
+    }
+  }
+}
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
+.material-symbols-rounded { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.bottom-nav-item.active { color: #b71c1c; }
+.bottom-nav-item.active span { font-variation-settings: 'FILL' 1, 'wght' 500; }
+</style>
+</head>
+<body class="pb-24 text-gray-700">
+
+<header class="bg-white sticky top-0 z-50 px-4 h-16 flex items-center justify-between border-b border-gray-200">
+  <div class="flex items-center gap-3">
+    <button class="p-2 rounded-full hover:bg-gray-100" onclick="window.history.back()">
+      <span class="material-symbols-rounded text-farmx-red">arrow_back</span>
+    </button>
+    <h1 class="text-xl font-semibold text-gray-900">Inventory</h1>
+  </div>
+  <button class="p-2 rounded-full hover:bg-gray-100">
+    <span class="material-symbols-rounded text-gray-600">search</span>
+  </button>
+</header>
+
+<main class="px-4 pt-4 space-y-3">
+  <!-- Item 1 -->
+  <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+    <div class="flex items-start gap-3">
+      <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-rounded text-yellow-600 text-3xl">grain</span>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold text-sm text-gray-900">Maize - Grade A</h3>
+          <span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">In Stock</span>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">Warehouse A • 150 bags</p>
+        <div class="flex items-center justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-600">Quantity:</span>
+            <div class="w-24 bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-farmx-red h-full rounded-full" style="width: 75%"></div>
+            </div>
+          </div>
+          <span class="text-xs font-medium text-farmx-red">₦45k/bag</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 2 -->
+  <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+    <div class="flex items-start gap-3">
+      <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-rounded text-farmx-red text-3xl">yard</span>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold text-sm text-gray-900">Fresh Red Onions</h3>
+          <span class="text-[10px] bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">Low Stock</span>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">Warehouse B • 25 bags</p>
+        <div class="flex items-center justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-600">Quantity:</span>
+            <div class="w-24 bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-yellow-500 h-full rounded-full" style="width: 25%"></div>
+            </div>
+          </div>
+          <span class="text-xs font-medium text-farmx-red">₦12.5k/bag</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 3 -->
+  <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+    <div class="flex items-start gap-3">
+      <div class="w-16 h-16 bg-white-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-rounded text-gray-600 text-3xl">rice</span>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold text-sm text-gray-900">White Long Grain Rice</h3>
+          <span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">In Stock</span>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">Warehouse A • 200 bags</p>
+        <div class="flex items-center justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-600">Quantity:</span>
+            <div class="w-24 bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-farmx-red h-full rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+          <span class="text-xs font-medium text-farmx-red">₦62k/bag</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 4 -->
+  <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+    <div class="flex items-start gap-3">
+      <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-rounded text-green-600 text-3xl">yard</span>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold text-sm text-gray-900">Fertilizer NPK 15-15-15</h3>
+          <span class="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Out of Stock</span>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">Warehouse C • 0 bags</p>
+        <div class="flex items-center justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-600">Quantity:</span>
+            <div class="w-24 bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-red-500 h-full rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+          <span class="text-xs font-medium text-farmx-red">₦8.5k/bag</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FAB -->
+<button class="fixed bottom-24 right-4 w-14 h-14 bg-farmx-red text-white rounded-full shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform">
+  <span class="material-symbols-rounded text-2xl">add</span>
+</button>
+
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-sm z-50 px-2 pb-safe">
+  <div class="flex justify-between items-center h-16">
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/index.html">
+      <span class="material-symbols-rounded">home</span>
+      <span class="text-[10px] font-medium">Home</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/market.html">
+      <span class="material-symbols-rounded">storefront</span>
+      <span class="text-[10px] font-medium">Market</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/wallet.html">
+      <span class="material-symbols-rounded">account_balance_wallet</span>
+      <span class="text-[10px] font-medium">Wallet</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/jobs.html">
+      <span class="material-symbols-rounded">work</span>
+      <span class="text-[10px] font-medium">Jobs</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/company.html">
+      <span class="material-symbols-rounded">business</span>
+      <span class="text-[10px] font-medium">Company</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/community.html">
+      <span class="material-symbols-rounded">groups</span>
+      <span class="text-[10px] font-medium">Community</span>
+    </a>
+    <a class="bottom-nav-item active flex flex-col items-center justify-center gap-0.5 flex-1" href="/inventory.html">
+      <span class="material-symbols-rounded">inventory_2</span>
+      <span class="text-[10px] font-medium">Inventory</span>
+    </a>
+  </div>
+</nav>
+
+</body>
+</html>
