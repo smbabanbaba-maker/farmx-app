@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>FarmX - Market</title>
+<meta name="theme-color" content="#b71c1c"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        farmx: { red: '#b71c1c', 'red-bright': '#d32f2f', 'red-dark': '#8b0000' }
+      },
+      fontFamily: { sans: ['Inter', 'sans-serif'] },
+      fontWeight: { normal: '400', medium: '500', semibold: '600' }
+    }
+  }
+}
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
+.material-symbols-rounded { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; font-size: 24px; }
+.bottom-nav-item.active { color: #b71c1c; }
+.bottom-nav-item.active span { font-variation-settings: 'FILL' 1, 'wght' 500; }
+</style>
+</head>
+<body class="pb-24 text-gray-700">
+
+<!-- Top Bar -->
+<header class="bg-white sticky top-0 z-50 px-4 h-16 flex items-center justify-between border-b border-gray-200">
+  <div class="flex items-center gap-3">
+    <button class="p-2 rounded-full hover:bg-gray-100" onclick="window.history.back()">
+      <span class="material-symbols-rounded text-farmx-red">arrow_back</span>
+    </button>
+    <h1 class="text-xl font-semibold text-gray-900">Market</h1>
+  </div>
+  <div class="flex items-center gap-2">
+    <button class="p-2 rounded-full hover:bg-gray-100">
+      <span class="material-symbols-rounded text-gray-600">search</span>
+    </button>
+    <button class="p-2 rounded-full hover:bg-gray-100">
+      <span class="material-symbols-rounded text-gray-600">filter_list</span>
+    </button>
+  </div>
+</header>
+
+<!-- Search Bar -->
+<div class="bg-white px-4 py-3 border-b border-gray-200">
+  <div class="flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-2.5">
+    <span class="material-symbols-rounded text-gray-500">search</span>
+    <input type="text" placeholder="Search products..." class="bg-transparent flex-1 outline-none text-sm"/>
+  </div>
+</div>
+
+<!-- Categories -->
+<div class="bg-white px-4 py-3 border-b border-gray-200 overflow-x-auto">
+  <div class="flex gap-2">
+    <button class="px-4 py-2 bg-farmx-red text-white rounded-full text-sm font-medium whitespace-nowrap">All</button>
+    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium whitespace-nowrap">Crops</button>
+    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium whitespace-nowrap">Livestock</button>
+    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium whitespace-nowrap">Equipment</button>
+    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium whitespace-nowrap">Seeds</button>
+  </div>
+</div>
+
+<!-- Products Grid -->
+<main class="px-4 py-4">
+  <div class="grid grid-cols-2 gap-3">
+    <!-- Product 1 -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+      <div class="aspect-square bg-gray-100 relative">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnxcHI0xlP5qIZVbnQIHqBg1h33Le5ZZc9eulC7Z8FUdmlD4GeojCxD-9nL8kiSth-lnglmy4q9ODXG1q0yH7sIjAt_fQ6D0eefE2B7X9L7RWRyvL7qtoUNeupMlZUbtxifGGMy_CyKeAUVnsGtKGouHpta3DzNquVW7fPcv4mHK1J86itH3GxQCMjijneQrAs6LJik9qCqmGKI06IH9wIYjJEMtqnYXVoIYwVDNW7pwYpDAxpqCwRRdUOAJ0pohdcZcVVsYnxA3QL" class="w-full h-full object-cover"/>
+        <span class="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded-lg text-xs font-medium">₦45,000</span>
+      </div>
+      <div class="p-3">
+        <h3 class="font-medium text-sm text-gray-900 line-clamp-2">Grade A Maize - 50kg</h3>
+        <p class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+          <span class="material-symbols-rounded text-[12px]">location_on</span> Kano
+        </p>
+        <p class="text-[10px] text-gray-400 mt-1">2 hours ago</p>
+      </div>
+    </div>
+    <!-- Product 2 -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+      <div class="aspect-square bg-gray-100 relative">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfQlHktgvjVeresQn4Ln3XozSNVhk_kxUriSisr8Apc9rRYZ8RuPLVQx-bbgWO-4XS_2wf28neVLQKISK499guZanPeI-gyM9FhGAAWe2CH8OTEtcW9X9_pztdmKELXSnSe1lkKFmpTzywGKxj-WDLRgBu5zoldALvMlufjjPtGBIT8ENUhPd_hDZ8YiGtAmOIYPm2C-8FYROkJV87XZHwSLPcOMMurJWk5L21K-QexF5Ijt6WyPTmvFr0Oq3wTMnBHoeZXl-wTwF6" class="w-full h-full object-cover"/>
+        <span class="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded-lg text-xs font-medium">₦62,000</span>
+      </div>
+      <div class="p-3">
+        <h3 class="font-medium text-sm text-gray-900 line-clamp-2">White Long Grain Rice</h3>
+        <p class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+          <span class="material-symbols-rounded text-[12px]">location_on</span> Lagos
+        </p>
+        <p class="text-[10px] text-gray-400 mt-1">5 hours ago</p>
+      </div>
+    </div>
+    <!-- Product 3 -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+      <div class="aspect-square bg-gray-100 relative">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCPbgFWLcYTO_Iq6DAjw18ZY0EWcMR4mjaqI2_pCpJHjLcDC_PhYz_V3LOKWgU7a-bRTb4QkrhrEXd2GnnHWWBibu5XsICBEkMcSOcgpPIA6NAXNmPL80t7XemfdTjDA4721vchK6Ins-drSBq7FG7rn1qadVTMW8kdfjJqWLFe6DEkIYF03iVSuThVXHeGHNLcNfF6zm_i3W9FKWqYs3OZOSlgHy08V4nDbNKjZVdVSEFl5eipdPonbFl22aO8AcZVGKRMQIiTNlA" class="w-full h-full object-cover"/>
+        <span class="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded-lg text-xs font-medium">₦12,500</span>
+      </div>
+      <div class="p-3">
+        <h3 class="font-medium text-sm text-gray-900 line-clamp-2">Fresh Red Onions</h3>
+        <p class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+          <span class="material-symbols-rounded text-[12px]">location_on</span> Kaduna
+        </p>
+        <p class="text-[10px] text-gray-400 mt-1">1 day ago</p>
+      </div>
+    </div>
+    <!-- Product 4 -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+      <div class="aspect-square bg-gray-100 relative">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYNiGGNdVqH1fz9PtS6UfeefXqfAReREgCb49r0f4UMqRkzgxebfFYlOM3yKeVQAIVgZV_c1uga8Q7ktY1aM6r6URVYuo9IRUcpVnxIGG01OCyybMhoib_mw1IKv7ABRgqes5P_dhUyC_PDNF9QfznkQhobW5_BOLzgAIvSoNis2aM8afUfq_IhWrj9woFuVBBpnZUOsIY4LdwHWLUrj-T0-8zzTROys7vzs797Lenn9SN8SIIRdOQn2nxWotm5h1vHHbzTGXGxWaF" class="w-full h-full object-cover"/>
+        <span class="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded-lg text-xs font-medium">₦850,000</span>
+      </div>
+      <div class="p-3">
+        <h3 class="font-medium text-sm text-gray-900 line-clamp-2">Agro Drone X1</h3>
+        <p class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+          <span class="material-symbols-rounded text-[12px]">location_on</span> Abuja
+        </p>
+        <p class="text-[10px] text-gray-400 mt-1">2 days ago</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FAB - Post Ad -->
+<a href="/post-ad.html" class="fixed bottom-24 right-4 w-14 h-14 bg-farmx-red text-white rounded-full shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform">
+  <span class="material-symbols-rounded text-2xl">add</span>
+</a>
+
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-sm z-50 px-2 pb-safe">
+  <div class="flex justify-between items-center h-16">
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/index.html">
+      <span class="material-symbols-rounded">home</span>
+      <span class="text-[10px] font-medium">Home</span>
+    </a>
+    <a class="bottom-nav-item active flex flex-col items-center justify-center gap-0.5 flex-1" href="/market.html">
+      <span class="material-symbols-rounded">storefront</span>
+      <span class="text-[10px] font-medium">Market</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/wallet.html">
+      <span class="material-symbols-rounded">account_balance_wallet</span>
+      <span class="text-[10px] font-medium">Wallet</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/jobs.html">
+      <span class="material-symbols-rounded">work</span>
+      <span class="text-[10px] font-medium">Jobs</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/company.html">
+      <span class="material-symbols-rounded">business</span>
+      <span class="text-[10px] font-medium">Company</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/community.html">
+      <span class="material-symbols-rounded">groups</span>
+      <span class="text-[10px] font-medium">Community</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/profile.html">
+      <span class="material-symbols-rounded">person</span>
+      <span class="text-[10px] font-medium">Profile</span>
+    </a>
+  </div>
+</nav>
+
+</body>
+</html>
