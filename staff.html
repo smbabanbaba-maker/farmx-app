@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>FarmX - Staff</title>
+<meta name="theme-color" content="#b71c1c"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { farmx: { red: '#b71c1c', 'red-bright': '#d32f2f' } },
+      fontFamily: { sans: ['Inter', 'sans-serif'] },
+      fontWeight: { normal: '400', medium: '500', semibold: '600' }
+    }
+  }
+}
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
+.material-symbols-rounded { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.bottom-nav-item.active { color: #b71c1c; }
+.bottom-nav-item.active span { font-variation-settings: 'FILL' 1, 'wght' 500; }
+</style>
+</head>
+<body class="pb-24 text-gray-700">
+
+<header class="bg-white sticky top-0 z-50 px-4 h-16 flex items-center justify-between border-b border-gray-200">
+  <div class="flex items-center gap-3">
+    <button class="p-2 rounded-full hover:bg-gray-100" onclick="window.history.back()">
+      <span class="material-symbols-rounded text-farmx-red">arrow_back</span>
+    </button>
+    <h1 class="text-xl font-semibold text-gray-900">Staff</h1>
+  </div>
+  <button class="p-2 rounded-full hover:bg-gray-100">
+    <span class="material-symbols-rounded text-farmx-red">person_add</span>
+  </button>
+</header>
+
+<main class="px-4 pt-4 space-y-3">
+  <!-- Staff 1 -->
+  <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+    <div class="w-14 h-14 rounded-full overflow-hidden ring-2 ring-farmx-red/20 flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3jtfL3R0r2RYfdigskvAHKJP6A1PQJ_KUhhT5N-K_I0Yuz0qb7NZE8b7meYqaIKCiGvcf0a54WGDn9eoS9k4j68ImQHNw_ntn4yoQxLJt9CgGjgNhn7hJCYrbhxdJVBbQpjTOLLwKxziihHwTLqnXqtEPPk6ZaFA0GLAbZ4bIfi5IN8NTVo-R17mFagx3MgTENl4LS47KXPKu7hooC3yMdcLn_LNDeE8PqyJLBYX32KuNL1IzL6Xjx0Twdkis8F4KrSX-aN5-nHYo" class="w-full h-full object-cover"/>
+    </div>
+    <div class="flex-1">
+      <div class="flex items-center justify-between">
+        <h3 class="font-semibold text-sm text-gray-900">Musa Ibrahim</h3>
+        <span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Active</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-0.5">Farm Manager</p>
+      <div class="flex items-center gap-3 mt-2">
+        <span class="text-[10px] text-gray-500">📞 09117957946</span>
+        <span class="text-[10px] text-gray-500">✉️ musa@farmx.com</span>
+      </div>
+    </div>
+    <button class="p-2 rounded-full hover:bg-gray-100">
+      <span class="material-symbols-rounded text-gray-400">more_vert</span>
+    </button>
+  </div>
+
+  <!-- Staff 2 -->
+  <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+    <div class="w-14 h-14 rounded-full overflow-hidden ring-2 ring-farmx-red/20 flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUW2pRKqLwUa1hGINBetOLlK4SlyvbTGdT9Zu3mbPbgsj1Bqr66cg7JobQDkGSH6K18Cvn4_Iy7JqF25ppiYTho45GHAhl642MOvHq40ONyNiIMWDOZ2tdzCtvujjwAksFEVt5nBJVbR0XlzE6HGjtTgmuxuD2dR9NJtoxZ8StfFatZzxY9cJorFn-MY6_XbBE5yuMt7kRDgV9w4dbqIm1XjJZ-O5gClNdL86aZ7PK_mZvpRjcUCRStjXpviY0SquiRdZRHd-taPzN" class="w-full h-full object-cover"/>
+    </div>
+    <div class="flex-1">
+      <div class="flex items-center justify-between">
+        <h3 class="font-semibold text-sm text-gray-900">Ahmed Bello</h3>
+        <span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Active</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-0.5">Driver</p>
+      <div class="flex items-center gap-3 mt-2">
+        <span class="text-[10px] text-gray-500">📞 08034567890</span>
+        <span class="text-[10px] text-gray-500">✉️ ahmed@farmx.com</span>
+      </div>
+    </div>
+    <button class="p-2 rounded-full hover:bg-gray-100">
+      <span class="material-symbols-rounded text-gray-400">more_vert</span>
+    </button>
+  </div>
+
+  <!-- Staff 3 -->
+  <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+    <div class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
+      <span class="material-symbols-rounded text-gray-600 text-2xl">person</span>
+    </div>
+    <div class="flex-1">
+      <div class="flex items-center justify-between">
+        <h3 class="font-semibold text-sm text-gray-900">Fatima Yusuf</h3>
+        <span class="text-[10px] bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">On Leave</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-0.5">Accountant</p>
+      <div class="flex items-center gap-3 mt-2">
+        <span class="text-[10px] text-gray-500"> 08056789012</span>
+        <span class="text-[10px] text-gray-500">✉️ fatima@farmx.com</span>
+      </div>
+    </div>
+    <button class="p-2 rounded-full hover:bg-gray-100">
+      <span class="material-symbols-rounded text-gray-400">more_vert</span>
+    </button>
+  </div>
+
+  <!-- Staff 4 -->
+  <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+    <div class="w-14 h-14 rounded-full overflow-hidden ring-2 ring-farmx-red/20 flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr8l98abvrdea6UOeJWW9MBR4Bo81-WrzGnP5vOheUiLEmNeVzaf9td3rzHs0PaV_Yp9BFi9eGx7M9UdYMP-G1cTG2YppY_Ef-VJj2donlSU8hB7tkaIiBBnn6FOMgl2P3UslgslQc6gDOFgoFoWjfiml5495clN_8KRpeY1Jx1erP6YRHhvCRL89lY85Gexx70QqRSrpApM-zgUTGNskZcB9LzhKas2m1y0YkXM77NObGOt8vCWkdjRztpZbTBc9yHnFJ0kYz4iVk" class="w-full h-full object-cover"/>
+    </div>
+    <div class="flex-1">
+      <div class="flex items-center justify-between">
+        <h3 class="font-semibold text-sm text-gray-900">Sani Abubakar</h3>
+        <span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Active</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-0.5">Tractor Operator</p>
+      <div class="flex items-center gap-3 mt-2">
+        <span class="text-[10px] text-gray-500">📞 08078901234</span>
+        <span class="text-[10px] text-gray-500">✉️ sani@farmx.com</span>
+      </div>
+    </div>
+    <button class="p-2 rounded-full hover:bg-gray-100">
+      <span class="material-symbols-rounded text-gray-400">more_vert</span>
+    </button>
+  </div>
+</main>
+
+<!-- FAB -->
+<button class="fixed bottom-24 right-4 w-14 h-14 bg-farmx-red text-white rounded-full shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform">
+  <span class="material-symbols-rounded text-2xl">person_add</span>
+</button>
+
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-sm z-50 px-2 pb-safe">
+  <div class="flex justify-between items-center h-16">
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/index.html">
+      <span class="material-symbols-rounded">home</span>
+      <span class="text-[10px] font-medium">Home</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/market.html">
+      <span class="material-symbols-rounded">storefront</span>
+      <span class="text-[10px] font-medium">Market</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/wallet.html">
+      <span class="material-symbols-rounded">account_balance_wallet</span>
+      <span class="text-[10px] font-medium">Wallet</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/jobs.html">
+      <span class="material-symbols-rounded">work</span>
+      <span class="text-[10px] font-medium">Jobs</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/company.html">
+      <span class="material-symbols-rounded">business</span>
+      <span class="text-[10px] font-medium">Company</span>
+    </a>
+    <a class="bottom-nav-item flex flex-col items-center justify-center gap-0.5 flex-1 text-gray-400" href="/community.html">
+      <span class="material-symbols-rounded">groups</span>
+      <span class="text-[10px] font-medium">Community</span>
+    </a>
+    <a class="bottom-nav-item active flex flex-col items-center justify-center gap-0.5 flex-1" href="/staff.html">
+      <span class="material-symbols-rounded">groups</span>
+      <span class="text-[10px] font-medium">Staff</span>
+    </a>
+  </div>
+</nav>
+
+</body>
+</html>
